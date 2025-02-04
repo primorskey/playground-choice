@@ -48,7 +48,8 @@ const closeSettingsPage = (reinitialize = false) => {
 };
 
 onMounted(async () => {
-  let json_req = await fetch("/json/sample.json");
+  let json_url = import.meta.env.BASE_URL + "json/sample.json";
+  let json_req = await fetch(json_url);
   json_default.value = await json_req.json();
 
   initializeChoice();
