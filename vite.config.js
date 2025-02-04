@@ -7,7 +7,7 @@ export default defineConfig({
   base: '/playground-choice/',
   plugins: [vue(), tailwindcss()],
   build: {
-    outDir: '../docs',
+    outDir: 'docs',
     emptyOutDir: true,
   }
 })
