@@ -1,0 +1,23 @@
+@import "tailwindcss";
+:root {
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.c-main-app {
+  --c-gray-light: #D3D3D3;
+  --c-gray-dark: #C0C0C0;
+  --c-gray-normal: #808080;
+  --c-green: #3CB371;
+}
+
+.c-clickable:hover {
+  cursor: pointer;
+}
+
+.c-text-input {
+  border-bottom: 1px solid black;
+}
