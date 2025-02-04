@@ -4,5 +4,10 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/playground-choice/',
   plugins: [vue(), tailwindcss()],
+  build: {
+    outDir: '../docs',
+    emptyOutDir: true,
+  }
 })
