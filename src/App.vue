@@ -36,8 +36,16 @@ const randomizeChoice = () => {
         return;
     }
     let selected_index = generateRandomInt(minIndex, maxIndex - 1);
-    highlighted_index.value = 0;
-    animateChoice(selected_index, 100, 500);
+
+    if (already_selected.value.length > 0) {
+        highlighted_index.value = selected_index;
+        setTimeout(() => {
+            animateDoneCallback(selected_index);
+        }, 500);
+    } else {
+        highlighted_index.value = 0;
+        animateChoice(selected_index, 100, 500);
+    }
 };
 
 const animateDoneCallback = (target_index) => {
@@ -52,15 +60,25 @@ const animateChoice = (
     max_animation_length,
     loops = 0
 ) => {
+    let should_loop = false;
+    if (not_yet_selected.value.length < all_choices.value.length * 0.7) {
+        should_loop = loops < not_yet_selected.value.length;
+    }
+    let animation_multiplier =
+        0.75 + (target_index / not_yet_selected.value.length) * (1.25 - 0.75);
+    if (
+        should_loop === false &&
+        target_index < not_yet_selected.value.length * 0.2
+    ) {
+        should_loop = loops < not_yet_selected.value.length;
+        animation_multiplier = 0.75;
+    }
     let nextAnimationLength = Math.min(
-        animation_length * 1.25,
+        animation_length * animation_multiplier,
         max_animation_length
     );
     setTimeout(() => {
-        if (
-            highlighted_index.value !== target_index ||
-            loops < not_yet_selected.value.length
-        ) {
+        if (highlighted_index.value !== target_index || should_loop) {
             if (highlighted_index.value === not_yet_selected.value.length) {
                 highlighted_index.value = 0;
             } else {
@@ -113,6 +131,7 @@ onMounted(async () => {
         </div>
         <div class="gap-4 p-4 grid grid-cols-3">
             <div
+                v-if="not_yet_selected.length > 0"
                 class="grid gap-4 h-fit"
                 :class="[
                     already_selected.length > 0
@@ -131,7 +150,12 @@ onMounted(async () => {
             </div>
             <div
                 v-if="already_selected.length > 0"
-                class="c-already-selected-container grid grid-cols-2 gap-4 h-fit"
+                class="c-already-selected-container grid gap-4 h-fit"
+                :class="[
+                    not_yet_selected.length === 0
+                        ? 'md:col-span-3 md:grid-cols-4 grid-cols-2'
+                        : ' grid-cols-2',
+                ]"
             >
                 <card-component
                     v-for="(selected, index) in already_selected"
