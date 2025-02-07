@@ -18,6 +18,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  highlighted: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const active = ref(false);
@@ -28,6 +32,7 @@ const active = ref(false);
     class="c-card rounded-lg h-fit min-h-[100px] grid grid-flow-row auto-rows-auto text-center items-center"
     :class="[
       card_type === 'unselected' ? 'c-unselected-card' : 'c-selected-card',
+      highlighted === true ? 'c-highlighted-card' : '',
     ]"
     @mouseover="enable_hover ? (active = true) : null"
     @mouseleave="active = false"
@@ -49,5 +54,11 @@ const active = ref(false);
 .c-unselected-card {
   background-color: var(--c-gray-normal);
   color: white;
+}
+
+.c-highlighted-card {
+  background-color: var(--c-gray-light);
+  transform: scale(1.1);
+  transition: all 150ms;
 }
 </style>

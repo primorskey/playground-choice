@@ -1,14 +1,130 @@
 [
     {
-        "title": "Title1",
-        "content": "Content1"
+        "title": "February 9",
+        "content": "Birthday"
     },
     {
-        "title": "Title2",
-        "content": "Content2"
+        "title": "Green",
+        "content": "Favorite Color"
     },
     {
-        "title": "Title3",
-        "content": "Content3"
+        "title": "Sinaing na Tulingan",
+        "content": "Favorite Ulam"
+    },
+    {
+        "title": "Nathaniel's Buco Pandan",
+        "content": "Favorite Dessert"
+    },
+    {
+        "title": "Coffee Crumble",
+        "content": "Favorite Ice Cream Flavor"
+    },
+    {
+        "title": "XO Caramel",
+        "content": "Favorite Candy"
+    },
+    {
+        "title": "Jack n Jill's ChizCurls",
+        "content": "Favorite Snak"
+    },
+    {
+        "title": "Maris Racal",
+        "content": "Favorite Actress"
+    },
+    {
+        "title": "David Licauco",
+        "content": "Favorite Actor"
+    },
+    {
+        "title": "Regine Velasquez",
+        "content": "Favorite Singer"
+    },
+    {
+        "title": "Notting Hill",
+        "content": "Favorite Movie"
+    },
+    {
+        "title": "Eat Bulaga",
+        "content": "Favorite TV Show"
+    },
+    {
+        "title": "Japan",
+        "content": "Favorite Country na napuntahan"
+    },
+    {
+        "title": "Bagong Pag-Asa Elementary School",
+        "content": "Elementary School Attended"
+    },
+    {
+        "title": "Balara High School",
+        "content": "Highschool Attended"
+    },
+    {
+        "title": "University of the East",
+        "content": "College Attended"
+    },
+    {
+        "title": "Accounting",
+        "content": "Course in College"
+    },
+    {
+        "title": "1985",
+        "content": "Year Graduated in Collage"
+    },
+    {
+        "title": "1965",
+        "content": "Year Born"
+    },
+    {
+        "title": "Snake",
+        "content": "Zodiac Sign (2025)"
+    },
+    {
+        "title": "Aquarius",
+        "content": "Astrological Sign"
+    },
+    {
+        "title": "7",
+        "content": "Foot Size"
+    },
+    {
+        "title": "Kris",
+        "content": "Name of First Pet"
+    },
+    {
+        "title": "Snorene",
+        "content": "Favorite Character"
+    },
+    {
+        "title": "Rodic's Tinapa Silog",
+        "content": "Favorite Silog"
+    },
+    {
+        "title": "Water",
+        "content": "Favorite Drink"
+    },
+    {
+        "title": "Europe Tour",
+        "content": "Dream Vacation"
+    },
+    {
+        "title": "22-5",
+        "content": "Salary Grade (2025)"
+    },
+    {
+        "title": "6998",
+        "content": "Level in Candy Crush (as of 02/06/2025)"
+    },
+    {
+        "title": "Fr. Gerry Orbos",
+        "content": "Favorite Priest"
+    },
+    {
+        "title": "2",
+        "content": "Favorite Number in Electric Fan"
+    },
+    {
+        "title": "24",
+        "content": "Favorite Temperature Setting for Aircon"
     }
 ]
