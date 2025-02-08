@@ -3,6 +3,10 @@ import { onMounted, ref } from "vue";
 import CardComponent from "./components/CardComponent.vue";
 import CustomChoicesComponent from "./components/CustomChoicesComponent.vue";
 
+const DEFAULT_SETTINGS = {
+    INVERT_TITLE: false,
+};
+
 const all_choices = ref([]),
     not_yet_selected = ref([]),
     already_selected = ref([]),
@@ -10,7 +14,10 @@ const all_choices = ref([]),
     json_default = ref([]),
     animation_countdown = ref(0),
     highlighted_index = ref(null),
-    preview_answers = ref(false);
+    preview_answers = ref(false),
+    app_settings = ref({
+        INVERT_TITLE: false,
+    });
 
 const generateRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -27,6 +34,14 @@ const initializeChoice = () => {
     already_selected.value = [];
     not_yet_selected.value = JSON.parse(JSON.stringify(all_choices.value));
     highlighted_index.value = null;
+
+    let saved_settings = localStorage.getItem("settings");
+    if (saved_settings) {
+        app_settings.value = JSON.parse(saved_settings);
+    } else {
+        app_settings.value = DEFAULT_SETTINGS;
+        localStorage.setItem("settings", JSON.stringify(app_settings.value));
+    }
 };
 
 const randomizeChoice = () => {
@@ -110,6 +125,11 @@ const closeSettingsPage = (reinitialize = false) => {
     settings_displayed.value = false;
 };
 
+const toggleDisplayedLabel = () => {
+    app_settings.value.INVERT_TITLE = !app_settings.value.INVERT_TITLE;
+    localStorage.setItem("settings", JSON.stringify(app_settings.value));
+};
+
 onMounted(async () => {
     let json_url = import.meta.env.BASE_URL + "json/sample.json";
     let json_req = await fetch(json_url);
@@ -126,7 +146,9 @@ onMounted(async () => {
             class="c-blur h-[100vh] w-[100vw] fixed z-20"
         >
             <CustomChoicesComponent
+                :app_settings="app_settings"
                 @closePopup="closeSettingsPage"
+                @toggleDisplayedLabel="toggleDisplayedLabel"
             ></CustomChoicesComponent>
         </div>
         <div class="gap-4 p-4 grid grid-cols-3">
@@ -164,6 +186,7 @@ onMounted(async () => {
                     :title="selected.title"
                     :content="selected.content"
                     :enable_hover="preview_answers ? true : false"
+                    :app_settings="app_settings"
                 ></card-component>
             </div>
         </div>
